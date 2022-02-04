@@ -7,9 +7,9 @@ from service.models import Service
 
 # Create your models here.
 class Booking(BaseModel):
-    service = models.ForeignKey('Service', on_delete=models.SET_NULL, verbose_name='service')
-    Agent = models.ForeignKey('Agent', on_delete=models.SET_NULL, verbose_name='Agent')
-    Customer = models.ForeignKey('Customer', on_delete=models.SET_NULL, verbose_name='Customer')
+    service = models.ForeignKey(Service, on_delete=models.RESTRICT, verbose_name='service')
+    agent = models.ForeignKey(Agent, on_delete=models.RESTRICT, verbose_name='Agent')
+    customer = models.ForeignKey(Customer, on_delete=models.RESTRICT, verbose_name='Customer')
     count_adult = models.PositiveIntegerField(default=0)
     count_child = models.PositiveIntegerField(default=0)
     start_time = models.DateTimeField()
