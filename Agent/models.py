@@ -13,7 +13,7 @@ class Agent(BaseModel):
 
 
 class Weekend(BaseModel):
-    Agent = models.ForeignKey('Agent', on_delete=models.RESTRICT, verbose_name='Agent',
+    Agent = models.ForeignKey(Agent, on_delete=models.RESTRICT, verbose_name='Agent',
                               related_name='Agent')
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
