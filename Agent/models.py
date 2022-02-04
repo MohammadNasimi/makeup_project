@@ -10,3 +10,10 @@ class Agent(BaseModel):
     experience_year = models.PositiveIntegerField(default=0)
     count_service = models.PositiveIntegerField()
     image = models.FileField(null=True, default=None, upload_to='Agent_pic', blank=True)
+
+
+class Weekend(BaseModel):
+    Agent = models.ForeignKey('Agent', on_delete=models.RESTRICT, verbose_name='Agent',
+                              related_name='Agent')
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
