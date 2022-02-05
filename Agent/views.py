@@ -17,4 +17,4 @@ class WeekendCreateView(CreateView):
     model = Weekend
     fields = ['Agent', 'start_time', 'end_time']
     template_name = 'Agent/create_Weekend.html'
-    success_url = reverse_lazy('service:create')
+    success_url = reverse_lazy('Agent:create_weekend')
