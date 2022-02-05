@@ -3,11 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from customer.models import Customer
+from service.models import Service
 
 
 class ServiceCreateView(CreateView):
-    model = Customer
+    model = Service
     fields = ['name', 'time', 'cost']
-    template_name = 'service/create_Service.html'
+    template_name = 'Service/create_Service.html'
     success_url = reverse_lazy('service:create')

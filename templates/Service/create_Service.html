@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>create_Service</title>
+    <title>create_service</title>
 </head>
 <body>
-<h1>Create Customer</h1>
-<form action="{% url 'customer:create' %}" method="post">
+<h1>Create Service</h1>
+<form action="{% url 'service:create' %}" method="post">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
