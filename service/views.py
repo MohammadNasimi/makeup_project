@@ -9,5 +9,5 @@ from customer.models import Customer
 class ServiceCreateView(CreateView):
     model = Customer
     fields = ['name', 'time', 'cost']
-    template_name = 'customer/create_customer.html'
-    success_url = reverse_lazy('customer:create')
+    template_name = 'service/create_Service.html'
+    success_url = reverse_lazy('service:create')
