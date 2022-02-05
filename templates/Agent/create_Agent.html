@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create_Agent</title>
+</head>
+<body>
+<h1>Create Agent</h1>
+<form action="{% url 'Agent:create_Agent' %}" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="create">
+</form>
+</body>
+</html>
