@@ -7,4 +7,5 @@ from customer.models import Customer
 
 class CustomerCreateView(CreateView):
     model = Customer
-    fields = '__all__'
+    fields = ['first_name', 'last_name', 'email', 'Password']
+    template_name = 'customer/create_customer.html'
