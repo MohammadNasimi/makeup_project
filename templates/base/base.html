@@ -19,13 +19,18 @@
                     <a class="nav-link" href="{% url 'Agent:create_weekend' %}">Weekend</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Link</a>
+                    <a class="nav-link" href="{% url 'customer:create' %}">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'service:create' %}">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'service:create' %}">Booking</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 {% block content %}{% endblock %}
-
 </body>
 </html>
