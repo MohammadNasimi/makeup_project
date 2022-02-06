@@ -24,5 +24,5 @@ urlpatterns = [
                   path('service/', include('service.urls'), name='service'),
                   path('Agent/', include('Agent.urls'), name='Agent'),
                   path('booking/', include('booking.urls'), name='booking'),
-                  path('/', include('landing.urls'), name='landing'),
+                  path('', include('landing.urls'), name='landing'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
