@@ -12,7 +12,7 @@ class Agent(BaseModel):
     image = models.FileField(null=True, default=None, upload_to='Agent_pic', blank=True)
 
     def __str__(self):
-        return f'{self.first_name},{self.last_name},{self.descriptions},{self.experience_year},{self.first_name},{self.count_service},{self.image}'
+        return f'{self.first_name}'
 
 
 class Weekend(BaseModel):
@@ -20,3 +20,6 @@ class Weekend(BaseModel):
                               related_name='Agent')
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+
+    def __str__(self):
+        return f'{self.Agent} {self.start_time}'
