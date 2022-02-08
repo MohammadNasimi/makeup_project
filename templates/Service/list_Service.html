@@ -9,27 +9,28 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">row</th>
+                        <th scope="col">ID</th>
                         <th scope="col">name</th>
                         <th scope="col">time</th>
                         <th scope="col">cost</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        {% for service in object_list %}
-                            <th scope="row">1</th>
+                    {% for service in object_list %}
+                        <tr>
+                            <td >{{ service.id }}</td>
                             <td>{{ service.name }}</td>
                             <td>{{ service.time }}</td>
                             <td>{{ service.cost }}</td>
-                            <td><a href="#" class="">
+                            <td><a href="{% url 'service:update' service.id %}" class="">
                                 <i class="bi-pencil-square" style="font-size:20px"></i>
                             </a></td>
-                            <td><a href="#" class="">
+                            <td><a href="{% url 'service:delete' service.id %}" class="">
                                 <i class="bi-trash" style="font-size:20px"></i>
                             </a></td>
-                        {% endfor %}
-                    </tr>
+                        </tr>
+                    {% endfor %}
+
                     </tbody>
                 </table>
             </div>
