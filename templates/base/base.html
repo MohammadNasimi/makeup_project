@@ -17,7 +17,16 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'Agent:create_Agent' %}">Agent</a>
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Agent
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="">
+                            <li><a class="dropdown-item" href="{% url 'Agent:create_Agent' %}">Agent</a></li>
+                            <li><a class="dropdown-item" href="{% url 'Agent:list_agent' %}">Agent list</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'Agent:create_weekend' %}">Weekend</a>
