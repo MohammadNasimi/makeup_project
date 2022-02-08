@@ -12,7 +12,7 @@ class Agent(BaseModel):
     image = models.FileField(null=True, default=None, upload_to='Agent_pic', blank=True)
 
     def __str__(self):
-        return f'{self.first_name}'
+        return f'{self.first_name} {self.last_name}'
 
 
 class Weekend(BaseModel):
