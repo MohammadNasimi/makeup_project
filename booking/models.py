@@ -15,3 +15,6 @@ class Booking(BaseModel):
     cost_final = models.PositiveIntegerField(default=0)
     agent = models.ForeignKey(Agent, on_delete=models.RESTRICT, verbose_name='Agent')
     customer = models.ForeignKey(Customer, on_delete=models.RESTRICT, verbose_name='Customer')
+
+    def __str__(self):
+        return f'{self.service} {self.cost_final}'
