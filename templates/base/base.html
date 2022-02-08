@@ -21,7 +21,16 @@
                     <a class="nav-link" href="{% url 'Agent:create_weekend' %}">Weekend</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'customer:create' %}">Customer</a>
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Customer
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="">
+                            <li><a class="dropdown-item" href="{% url 'customer:create' %}">customer</a></li>
+                            <li><a class="dropdown-item" href="{% url 'customer:list' %}">customer list</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
