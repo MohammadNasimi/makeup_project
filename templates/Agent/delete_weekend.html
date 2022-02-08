@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+{% block title %} delete_weekend {% endblock %}
+{% block content %}
+    <div class="container mt-10 justify-content-center">
+        <h1 class="mr-30"> delete weekend</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            {{ form }}
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+{% endblock %}
