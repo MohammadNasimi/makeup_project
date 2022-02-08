@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+{% block title %} list_customer{% endblock %}
+{% block content %}
+    <div class="container mt-10 justify-content-center">
+        <h1 class="mr-30"> list customer</h1>
+        <form action="{% url 'service:list' %}" method="get">
+            {% csrf_token %}
+            <div class="row mt-3 justify-content-center">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">first name</th>
+                        <th scope="col">last name</th>
+                        <th scope="col">start time</th>
+                        <th scope="col">end time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for weekend in object_list %}
+                        <tr>
+                            <td >{{ weekend.id }}</td>
+                            <td>{{ weekend.Agent.first_name }}</td>
+                            <td>{{ weekend.Agent.last_name }}</td>
+                            <td>{{ weekend.start_time }}</td>
+                            <td>{{ weekend.end_time }}</td>
+                            <td><a href="{% url 'customer:update' customer.id %}" class="">
+                                <i class="bi-pencil-square" style="font-size:20px"></i>
+                            </a></td>
+                            <td><a href="{% url 'customer:delete' customer.id %}" class="">
+                                <i class="bi-trash" style="font-size:20px"></i>
+                            </a></td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+{% endblock %}
