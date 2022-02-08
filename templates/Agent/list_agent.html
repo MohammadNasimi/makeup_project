@@ -1,31 +1,35 @@
 {% extends "base/base.html" %}
-{% block title %} list_Service {% endblock %}
+{% block title %} list_Agent {% endblock %}
 {% block content %}
     <div class="container mt-10 justify-content-center">
-        <h1 class="mr-30"> list Service</h1>
-        <form action="{% url 'service:list' %}" method="get">
+        <h1 class="mr-30"> list Agent</h1>
+        <form action="">
             {% csrf_token %}
             <div class="row mt-3 justify-content-center">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">name</th>
-                        <th scope="col">time</th>
-                        <th scope="col">cost</th>
+                        <th scope="col">firstname</th>
+                        <th scope="col">lastname</th>
+                        <th scope="col">descriptions</th>
+                        <th scope="col">experience year</th>
+                        <th scope="col">count service</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for service in object_list %}
+                    {% for Agent in object_list %}
                         <tr>
-                            <td >{{ service.id }}</td>
-                            <td>{{ service.name }}</td>
-                            <td>{{ service.time }}</td>
-                            <td>{{ service.cost }}</td>
-                            <td><a href="{% url 'service:update' service.id %}" class="">
+                            <td >{{ Agent.id }}</td>
+                            <td>{{ Agent.first_name }}</td>
+                            <td>{{ Agent.last_name }}</td>
+                            <td>{{ Agent.descriptions }}</td>
+                            <td>{{ Agent.experience_year }}</td>
+                            <td>{{ Agent.count_service }}</td>
+                            <td><a href="{% url 'Agent:update_agent' Agent.id %}" class="">
                                 <i class="bi-pencil-square" style="font-size:20px"></i>
                             </a></td>
-                            <td><a href="{% url 'service:delete' service.id %}" class="">
+                            <td><a href="{% url 'Agent:delete_agent' Agent.id %}" class="">
                                 <i class="bi-trash" style="font-size:20px"></i>
                             </a></td>
                         </tr>
