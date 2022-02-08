@@ -37,3 +37,22 @@ class WeekendCreateView(CreateView):
     fields = ['Agent', 'start_time', 'end_time']
     template_name = 'Agent/create_Weekend.html'
     success_url = reverse_lazy('Agent:create_weekend')
+
+
+class WeekendListView(ListView):
+    model = Weekend
+    fields = ['Agent', 'start_time', 'end_time']
+    template_name = 'Agent/list_weekend.html'
+
+
+class WeekendUpdateView(UpdateView):
+    model = Weekend
+    fields = ['Agent', 'start_time', 'end_time']
+    template_name = 'Agent/update_weekend.html'
+    success_url = reverse_lazy('Agent:list_weekend')
+
+
+class WeekendDeleteView(DeleteView):
+    model = Weekend
+    template_name = 'Agent/delete_weekend.html'
+    success_url = reverse_lazy('Agent:delete_weekend')
