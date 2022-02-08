@@ -24,10 +24,10 @@
                             <td>{{ weekend.Agent.last_name }}</td>
                             <td>{{ weekend.start_time }}</td>
                             <td>{{ weekend.end_time }}</td>
-                            <td><a href="{% url 'customer:update' customer.id %}" class="">
+                            <td><a href="{% url 'Agent:update_weekend' weekend.id %}" class="">
                                 <i class="bi-pencil-square" style="font-size:20px"></i>
                             </a></td>
-                            <td><a href="{% url 'customer:delete' customer.id %}" class="">
+                            <td><a href="{% url 'Agent:delete_weekend' weekend.id %}" class="">
                                 <i class="bi-trash" style="font-size:20px"></i>
                             </a></td>
                         </tr>
