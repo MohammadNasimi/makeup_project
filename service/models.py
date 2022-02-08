@@ -9,4 +9,4 @@ class Service(BaseModel):
     cost = models.PositiveIntegerField(null=False, blank=True, verbose_name='Price_Service')
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name} {self.time} {self.cost}'
