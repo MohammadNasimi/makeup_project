@@ -7,3 +7,6 @@ class Service(BaseModel):
     name = models.CharField(max_length=40, null=True, blank=True)
     time = models.PositiveIntegerField(null=False, blank=True, default=1, verbose_name='Time_Service')
     cost = models.PositiveIntegerField(null=False, blank=True, verbose_name='Price_Service')
+
+    def __str__(self):
+        return f'{self.name}'

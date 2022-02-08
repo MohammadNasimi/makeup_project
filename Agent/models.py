@@ -11,6 +11,9 @@ class Agent(BaseModel):
     count_service = models.PositiveIntegerField()
     image = models.FileField(null=True, default=None, upload_to='Agent_pic', blank=True)
 
+    def __str__(self):
+        return f'{self.first_name},{self.last_name},{self.descriptions},{self.experience_year},{self.first_name},{self.count_service},{self.image}'
+
 
 class Weekend(BaseModel):
     Agent = models.ForeignKey(Agent, on_delete=models.RESTRICT, verbose_name='Agent',
