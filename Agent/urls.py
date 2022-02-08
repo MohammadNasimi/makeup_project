@@ -9,4 +9,7 @@ urlpatterns = [
     path('update_agent/<int:pk>', views.AgentUpdateView.as_view(), name='update_agent'),
     path('Delete_agent/<int:pk>', views.AgentDeleteView.as_view(), name='delete_agent'),
     path('create_weekend/', views.WeekendCreateView.as_view(), name='create_weekend'),
+    path('list_weekend/', views.WeekendListView.as_view(), name='list_weekend'),
+    path('update_weekend/<int:pk>', views.WeekendUpdateView.as_view(), name='update_weekend'),
+    path('Delete_weekend/<int:pk>', views.WeekendDeleteView.as_view(), name='delete_weekend'),
 ]
