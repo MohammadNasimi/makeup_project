@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+{% block title %} list_Service {% endblock %}
+{% block content %}
+    <div class="container mt-10 justify-content-center">
+        <h1 class="mr-30"> list Booking</h1>
+        <form action="">
+            {% csrf_token %}
+            <div class="row mt-3 justify-content-center">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">name service</th>
+                        <th scope="col">count_adult</th>
+                        <th scope="col">count_child</th>
+                        <th scope="col">start_time</th>
+                        <th scope="col">agent</th>
+                        <th scope="col">customer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for booking in object_list %}
+                        <tr>
+                            <td >{{ booking.id }}</td>
+                            <td>{{ booking.service.name }}</td>
+                            <td>{{ booking.count_adult }}</td>
+                            <td>{{ booking.count_child }}</td>
+                            <td>{{ booking.start_time }}</td>
+                            <td>{{ booking.agent.last_name }}</td>
+                            <td>{{ booking.customer.last_name }}</td>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+{% endblock %}
