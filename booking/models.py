@@ -21,7 +21,7 @@ class Booking(BaseModel):
 
     @property
     def list_time(self):
-        return [i for i in range(8, self.service.time * (self.count_child + self.count_adult), 17)]
+        return [i for i in range(8, 17, self.service.time * (self.count_child + self.count_adult))]
         # start work in 8 end work 17 list time for this book
 
     @property
