@@ -18,3 +18,12 @@ class Booking(BaseModel):
 
     def __str__(self):
         return f'{self.service} {self.cost_final}'
+
+    @property
+    def list_time(self):
+        return [i for i in range(8, self.service.time * (self.count_child + self.count_adult), 17)]
+        # start work in 8 end work 17 list time for this book
+
+    @property
+    def cost_all(self):
+        return self.service.cost * (self.count_child + self.count_adult)  # price child and adult is same
