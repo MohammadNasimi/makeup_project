@@ -4,9 +4,9 @@ from core.models import BaseModel
 
 # Create your models here.
 class Agent(BaseModel):
-    first_name = models.CharField(max_length=150, verbose_name='first_name')
-    last_name = models.CharField(max_length=150, verbose_name='last_name')
-    descriptions = models.CharField(max_length=1000, verbose_name='descriptions')
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=150)
+    descriptions = models.CharField(max_length=1000)
     experience_year = models.PositiveIntegerField(default=0)
     count_service = models.PositiveIntegerField()
     image = models.FileField(null=True, default=None, upload_to='Agent_pic', blank=True)
