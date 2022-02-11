@@ -1,0 +1,16 @@
+{% extends "landing/base.html" %}
+{% block title %} Booking {% endblock %}
+{% block content %}
+<div class="container mt-10 justify-content-center">
+    <h1 class="mr-20"> CREATE Booking</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row mt-3 justify-content-center">
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input class="bg-primary w-25 h-50 mt-5" type="submit" value="create">
+        </div>
+    </form>
+</div>
+{% endblock %}
