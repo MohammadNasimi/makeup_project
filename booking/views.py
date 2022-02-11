@@ -42,14 +42,14 @@ class BookingView(View):
         context = {
             'form': form,
         }
-        return render(request=self.request, template_name='Booking/bo.html', context=context)
+        return render(request=self.request, template_name='Booking/create_booking.html', context=context)
 
     def get(self, request):
         form = forms.BookingForm()
         context = {
             'form': form,
         }
-        return render(request=self.request, template_name='Booking/bo.html', context=context)
+        return render(request=self.request, template_name='Booking/create_booking.html', context=context)
 
 
 class BookingListView(ListView):
