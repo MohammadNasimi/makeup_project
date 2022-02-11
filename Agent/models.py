@@ -14,6 +14,10 @@ class Agent(BaseModel):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
+    class Meta:
+        verbose_name = 'مشتری'
+        verbose_name_plural = 'مشتری ها'
+
 
 class Weekend(BaseModel):
     Agent = models.ForeignKey(Agent, on_delete=models.RESTRICT, verbose_name='Agent',
