@@ -2,7 +2,7 @@
 {% block title %} Booking {% endblock %}
 {% block content %}
     <div class="container mt-10 justify-content-center">
-        <form action="{% url 'Booking:create_booking' %}" method="post">
+        <form action="" method="post">
             {% csrf_token %}
             <div class="row mt-3 justify-content-center">
                 <h1>{{ form.label }}</h1>
@@ -12,7 +12,8 @@
                             <tr>
                                 <th><label for="id_service">Service:</label></th>
                                 <td>
-                                    <select name="service" id="id_service" class="form-select" required>
+                                    <select name="service" id="id_service" class="form-select" required>form
+                                    <h1>form</h1>
                                         {% for value in form %}
                                             <option>{{ value }}</option>
                                         {% endfor %}
@@ -54,28 +55,22 @@
                                         <input type="Date" name="start_time" id="id_count_adult"
                                                class="form-control" required/>
                                     </div>
-                                    <div class="form-outline">
-                                        <input type="time" name="start_time" id="id_count_adult"
-                                               class="form-control" required/>
-                                    </div>
                                 </td>
                             </tr>
                         {% endif %}
                     </table>
-                    {% if form.label == 'Agent' %}
-                        {% for value in form %}
+{#                    {% if form.label == 'Agent' %}#}
+{#                        {% for value in form %}#}
 {#                            <h1>{{ value }}</h1>#}
 {#                            <h1>{{ value.first_name}}</h1>#}
-                            <div class="card col-2 m-1" style="width: 18rem;">
-                                <img class="card-img-top" src="{{ value.Image }}" alt="Card image cap">
-                                <div class="card-body">
-                                    <button class="card-text" name="agent">Choice</button>
-                                </div>
-                            </div>
-
-                        {% endfor %}
-
-                    {% endif %}
+{#                            <div class="card col-2 m-1" style="width: 18rem;">#}
+{#                                <img class="card-img-top" src="{{ value.Image }}" alt="Card image cap">#}
+{#                                <div class="card-body">#}
+{#                                    <button class="card-text" name="agent">Choice</button>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
 
                 {% endfor %}
                 <input class="bg-primary w-25 h-50 mt-5" type="submit" value="create">

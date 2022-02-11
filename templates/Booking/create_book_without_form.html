@@ -1,189 +1,83 @@
 {% extends "landing/base.html" %}
-{% load static %}
-{%block Content%}
-    
-    
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-4 card text-white bg-dark mb-3">
-                <div class="card-header text-info text-center">
-                    <h1 class="card-text">
-                        Reservation
-                    </h1>
-                </div>
-                <div class="card-body">
-                    <form class='form-control p-5 text-center' action="" method="POST" style="background-color: rgba(1000,1000,1000,0.8);">
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <button class="btn btn-primary mt-3" type="submit">Reserve</button>
-                    </form>
-                </div>
+{% block title %} Booking {% endblock %}
+{% block content %}
+    <div class="container mt-10 justify-content-center">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row mt-3 justify-content-center">
+                <h1>{{ form.label }}</h1>
+                {% for form in form %}
+                    <table class="table table-striped">
+                        {% if form.label == 'Service' %}
+                            <tr>
+                                <th><label for="id_service">Service:</label></th>
+                                <td>
+                                    <select name="service" id="id_service" class="form-select" required>form
+                                    <h1>form</h1>
+                                        {% for value in form %}
+                                            <option>{{ value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>
+                        {% endif %}
+
+                        {% if form.label == 'Count adult' %}
+                            <tr>
+                                <th><label for="id_service">Adult:</label></th>
+                                <td>
+                                    <div class="form-outline">
+                                        <input type="number" name="count_adult" value="0" min="0" id="id_count_adult"
+                                               class="form-control" required/>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endif %}
+
+                        {% if form.label == 'Count child' %}
+                            <tr>
+                                <th><label for="id_service">Child:</label></th>
+                                <td>
+                                    <div class="form-outline">
+                                        <input type="number" name="count_child" value="0" min="0" id="id_count_adult"
+                                               class="form-control" required/>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endif %}
+
+
+                        {% if form.label == 'Start time' %}
+                            <tr>
+                                <th><label for="id_service">Date:</label></th>
+                                <td>
+                                    <div class="form-outline">
+                                        <input type="Date" name="start_time" id="id_count_adult"
+                                               class="form-control" required/>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    </table>
+                    {% if form.label == 'Agent' %}
+                        {% for value in form %}
+                            <h1>{{ value }}</h1>
+                            <h1>{{ value.first_name}}</h1>
+                            <div class="card col-2 m-1" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ value.Image }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <button class="card-text" name="agent">Choice</button>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% endfor %}
+                <input class="bg-primary w-25 h-50 mt-5" type="submit" value="create">
             </div>
-        </div>
+        </form>
     </div>
 {% endblock %}
 
-{% block Script %}
-
-    <script>
-        //  ----------------------------------- getting data from api --------------------------------
-        var weekends = $.ajax({
-            url : '{% url "weekend-list" %}',
-            async: false,
-            dataType: 'json'
-        }).responseJSON
-        var agents = $.ajax({
-            url : '{% url "agent-list" %}',
-            async: false,
-            dataType: 'json'
-        }).responseJSON
-        var bookings = $.ajax({
-            url : '{% url "booking-list" %}',
-            async: false,
-            dataType: 'json'
-        }).responseJSON
-        const services = $.ajax({
-            url : '{% url "service-list" %}',
-            async: false,
-            dataType: 'json'
-        }).responseJSON
-        //  ----------------------------------- end of getting data --------------------------------
-
-
-
-        for(let i = 0 ; i < services.length; i++){ // validate service options on load
-            $("#id_service  ").append(`<option value=${services[i].id}>${services[i].name}</option>`)
-        }
-        // ------------------------------------------------------------------------------------------
-
-        var adult_count = document.getElementById('id_adult_count')
-        var child_count = document.getElementById('id_child_count')
-        var getSelectedService = () => { // Function to get Selected service option
-            for(let i = 0; i<services.length ; i++){
-            if(services[i].id == $('#id_service').val()){
-                return services[i]
-            }
-        }
-        }
-        child_count.setAttribute('max', getSelectedService().capacity)
-        adult_count.setAttribute('max', getSelectedService().capacity)
-
-        adult_count.onchange = adultEvent => { // Maximum Service capacity validator
-            let selectedService = getSelectedService()
-            child_count.setAttribute("max", selectedService.capacity - Number(adult_count.value))
-        }
-        child_count.onchange = childEvent => { // Maximum Service capacity validator
-            let selectedService = getSelectedService()
-            adult_count.setAttribute("max", selectedService.capacity - Number(child_count.value))
-        }
-
-        const WeekendValidate = dateString => {  // Detect Weekend Days Function
-            const day = (new Date(dateString)).getDay();
-            for(let i = 0 ; i < weekends.length ; i++){
-                if( day == weekends[i].day){
-                    return false
-                }
-            }
-            return true;
-        }
-        document.querySelector('#id_service').onchange = serviceEvent => { // reset count fields after changing service
-            child_count.setAttribute('max', getSelectedService().capacity)
-            child_count.value = 0
-            adult_count.setAttribute('max', getSelectedService().capacity)
-            adult_count.value = 0
-            $("#id_agent").empty()
-            $("#id_agent").append("<option value='void'>----</option>")
-        }
-        document.querySelector('#id_date').onchange = dateEvent => { // event of changing day
-            let selectedService = document.querySelector('#id_service').value
-            if (!WeekendValidate(dateEvent.target.value)) {console.log('holiday check if triggered') // Holiday detected
-                dateEvent.target.value = '';
-                $("#id_time_duration").empty()
-                $("#id_agent").empty()
-                $("#id_time_duration").append("<option value='void'>----</option>")
-                $("#id_agent").append("<option value='void'>----</option>")
-
-                Swal.fire(
-                    `Holiday`,
-                    '',
-                    'error'
-                )
-            }
-            else{console.log('holiday check else triggered') // Free day
-                $("#id_time_duration").empty()
-                $("#id_time_duration").append("<option value='void'>----</option>")
-                for(let j = 0; j<services.length ; j++){ // validate time durations options
-                    if(services[j].id == selectedService){
-                        for(let i = 0 ; i<services[j].time_durations.length ; i++){
-                            $("#id_time_duration").append(`<option value="${services[j].time_durations[i]}">${services[j].time_durations[i]}</option>`)
-                        }
-                    }
-                }
-            }
-
-        }
-        document.querySelector('#id_time_duration').onchange = timeEvent => { // time change event
-            $("#id_agent").empty()
-            let selectedService = document.querySelector('#id_service').value
-            let selectedDate = document.querySelector("#id_date").value
-            console.log(selectedDate)
-            let selectedTime = timeEvent.target.value
-            var serviceAgents = []
-            for(let i = 0 ; i<agents.length ; i++){
-                if(agents[i].service == selectedService){
-                    serviceAgents.push(agents[i].id)
-                }
-            }
-            for(let i = 0 ; i<bookings.length ; i++){
-                if(bookings[i].reservedDate == selectedDate){
-                    console.log('day mosavi shod')
-                    for(let j = 0 ; j<agents.length ; j++){
-                        if(bookings[i].agent == agents[j].id){
-                            console.log('agent mosavi shod')
-                            if(bookings[i].reservedTime == selectedTime){
-                                console.log('time mosavi shod')
-                                serviceAgents.splice(j, 1)
-
-                            }
-                        }
-                    }
-                }
-            }
-            if(serviceAgents.length > 0){
-                for(let i=0 ; i<serviceAgents.length ; i++){
-                    for(let j=0 ; j<agents.length ; j++){
-                        if(agents[j].id == serviceAgents[i]){
-                            $("#id_agent").append(`<option value=${agents[j].id}>${agents[j].name}</options>`)
-                        }
-                    }
-                }
-            }
-            else{
-                Swal.fire('no agents available for this time', '', 'error')
-                $("#id_agent").empty()
-                $("#id_agent").append("<option value='void'>----</option>")
-            }
-        }
-
-        // $("#id_service").on('change', function(){
-        //     console.log('')
-        // })
-
-        // var picker = datepicker('#id_date', {
-        //     disabler: date => {
-        //         switch(weekends.length){
-        //             case 1:
-        //                 return date.getDay() === weekends[0].day
-        //             case 2:
-        //                 return date.getDay() === weekends[0].day || date.getDay() === weekends[1].day
-        //             case 3:
-        //                 return date.getDay() === weekends[0].day || date.getDay() === weekends[1].day || date.getDay() === weekends[2].day
-        //         }
-        //     },
-        //     onSelect: (instance, date) => {
-        //             console.log(instance.dateSelected)
-        //         }
-        //     })
-
-    </script>
-{% endblock %}
