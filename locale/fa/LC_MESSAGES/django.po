@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-13 23:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: Agent/models.py:21
+msgid "Agent"
+msgstr "کاربر"
+
+#: Agent/models.py:22
+msgid "Agents"
+msgstr "کاربران"
+
+#: core/models.py:20
+msgid "Deleted Datetime"
+msgstr ""
+
+#: core/models.py:21
+msgid "This is deleted datetime"
+msgstr ""
+
+#: core/models.py:25
+msgid "Deleted status"
+msgstr ""
+
+#: core/models.py:26
+msgid "This is deleted status"
+msgstr ""
+
+#: core/models.py:30
+msgid "Active status"
+msgstr ""
+
+#: core/models.py:31
+msgid "This is active status"
+msgstr ""
+
+#: templates/landing/base.html:19
+msgid "Beauty salon Akbar"
+msgstr "سالن زیبایی اکبر"
+
+#: templates/landing/base.html:23
+msgid "Home"
+msgstr "خانه"
+
+#: templates/landing/base.html:26
+msgid "Book service"
+msgstr "رزرو"
+
+#: templates/landing/base.html:29
+msgid "contact Us"
+msgstr "درباره ما"
+
+#: templates/landing/base.html:32
+msgid "About us"
+msgstr "ارتباط با ما"
