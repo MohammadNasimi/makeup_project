@@ -1,5 +1,6 @@
 from django.db import models
 from core.models import BaseModel
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
@@ -15,8 +16,10 @@ class Agent(BaseModel):
         return f'{self.first_name} {self.last_name}'
 
     class Meta:
-        verbose_name = 'مشتری'
-        verbose_name_plural = 'مشتری ها'
+        # verbose_name = 'مشتری'
+        # verbose_name_plural = 'مشتری ها'
+        verbose_name = _('Agent')
+        verbose_name_plural = _('Agents')
 
 
 class Weekend(BaseModel):
